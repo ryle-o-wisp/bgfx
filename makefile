@@ -58,6 +58,26 @@ projgen: ## Generate project files for all configurations.
 	$(GENIE)              --with-combined-examples                   --gcc=ios-simulator64 gmake
 	$(GENIE)              --with-combined-examples                   --gcc=rpi             gmake
 
+projgen-tools-lib: ## Generate project files for all configurations.
+	$(GENIE) --with-tools --with-shared-lib                       vs2015
+	$(GENIE) --with-tools --with-shared-lib                       vs2017
+	$(GENIE) --with-tools                   --vs=winstore100      vs2017
+	$(GENIE) --with-tools --with-shared-lib --gcc=mingw-gcc       gmake
+	$(GENIE) --with-tools --with-shared-lib --gcc=linux-gcc       gmake
+	$(GENIE) --with-tools --with-shared-lib --gcc=osx             gmake
+	$(GENIE) --with-tools --with-shared-lib --xcode=osx           xcode4
+	$(GENIE) --with-tools --with-shared-lib --xcode=ios           xcode4
+	$(GENIE)              --with-shared-lib --gcc=freebsd         gmake
+	$(GENIE)                                --gcc=android-arm     gmake
+	$(GENIE)                                --gcc=android-mips    gmake
+	$(GENIE)                                --gcc=android-x86     gmake
+	$(GENIE)                                --gcc=asmjs           gmake
+	$(GENIE)                                --gcc=ios-arm         gmake
+	$(GENIE)                                --gcc=ios-arm64       gmake
+	$(GENIE)                                --gcc=ios-simulator   gmake
+	$(GENIE)                                --gcc=ios-simulator64 gmake
+	$(GENIE)                                --gcc=rpi             gmake
+
 .build/projects/gmake-android-arm:
 	$(GENIE) --gcc=android-arm gmake
 android-arm-debug: .build/projects/gmake-android-arm ## Build - Android ARM Debug
